@@ -12,6 +12,8 @@ import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.orbotix.le.RobotLE;
 
+import java.lang.Exception;
+
 public class SpheroConnect extends AsyncTask<String, String, String> {
 
     private ConvenienceRobot mRobot;
@@ -20,7 +22,11 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     public SpheroConnect(CallbackContext callbackContext, Context c) {
         this.callbackContext = callbackContext;
-        DualStackDiscoveryAgent.getInstance().startDiscovery(c);
+        try {
+            DualStackDiscoveryAgent.getInstance().startDiscovery(c);
+        }catch (Exception e){
+            callbackContext.success();
+        }
     }
 
     @Override
