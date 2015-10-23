@@ -18,6 +18,10 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 
+import com.orbotix.le.DiscoveryAgentLE;
+import com.orbotix.le.RobotLE;
+import com.orbotix.common.RobotChangedStateListener;
+
 public class CustomPlugin extends CordovaPlugin {
 
     Integer a = 1;
@@ -27,7 +31,25 @@ public class CustomPlugin extends CordovaPlugin {
         if ("beep".equals(action)) {
             // print your log here...
             a++;
-            alert(a.toString(), a.toString(), "tu", callbackContext);
+            String err = "";
+            try {
+                DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
+            } catch (Exception e) {
+                err = e.getMessage();
+            }
+            DualStackDiscoveryAgent.getInstance().addRobotStateListenernew(RobotChangedStateListener() {
+                @Override
+                public void handleRobotChangedState (Robot robot, RobotChangedStateNotificationType type){
+                    switch (type) {
+                        case Online:
+                            robot.setLed(0.0f, 0.0f, 1.0f);
+                            break;
+                        case Disconnected:
+                            break;
+                    }
+                }
+            });
+            alert(a.toString(), err, "tu", callbackContext);
             callbackContext.success();
             return true;
         }
