@@ -27,7 +27,6 @@ public class SpheroConnect extends Activity implements RobotChangedStateListener
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_main );
 
         /*
             Associate a listener for robot state changes with the DualStackDiscoveryAgent.
