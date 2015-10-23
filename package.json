@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "name": "cordova-plugin-sphero",
+  "description": "Cordova Sphero Plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/D0d0/cordova-plugin-sphero"
+  },
+  "keywords": [
+    "cordova",
+    "sphero",
+    "ecosystem:cordova"
+  ],
+  "cordova": {
+    "id": "cordova-plugin-sphero",
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova": "^5.1.1",
+    "cordova-parametic": "vjrantal/cordova-paramedic",
+    "grunt": "^0.4.5",
+    "grunt-jscodesniffer": "^0.1.10",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jscs": "^1.5.0",
+    "load-grunt-tasks": "^1.0.0"
+  }
+}
