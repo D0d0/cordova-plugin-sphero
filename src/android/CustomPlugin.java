@@ -38,16 +38,12 @@ public class CustomPlugin extends CordovaPlugin {
             a++;
             String err = "";
             try {
-                DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
-            } catch (Exception e) {
-                err = e.getMessage();
-            }/*
-            DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
-                @Override
-                public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
-                    switch (type) {
-                        case Online:
-                            if (robot instanceof RobotLE) {
+                DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
+                    @Override
+                    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
+                        switch (type) {
+                            case Online:
+                            /*if (robot instanceof RobotLE) {
                                 ((RobotLE) robot).setDeveloperMode(true);
                             }
 
@@ -59,12 +55,16 @@ public class CustomPlugin extends CordovaPlugin {
                                     mRobot.setLed(0.0f, 0.0f, 1.0f);
                                 }
                             }, 2000);
-                            break;
-                        case Disconnected:
-                            break;
+                            break;*/
+                            case Disconnected:
+                                break;
+                        }
                     }
-                }
-            });*/
+                });
+                DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
+            } catch (Exception e) {
+                err = e.getMessage();
+            }
             alert(a.toString(), err, "tu", callbackContext);
             callbackContext.success();
             return true;
