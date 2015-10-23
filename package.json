@@ -1,6 +1,5 @@
 {
   "version": "0.0.1",
-  "name": "cordova-plugin-sphero",
   "description": "Cordova Sphero Plugin",
   "repository": {
     "type": "git",
