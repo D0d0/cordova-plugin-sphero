@@ -34,11 +34,11 @@ public class CustomPlugin extends CordovaPlugin {
         if ("beep".equals(action)) {
             // print your log here...
             String result = "";
-            try{
-                Intent intent=new Intent(getApplicationContext(),SpheroConnect.class);
+            try {
+                Intent intent = new Intent(getApplicationContext(), SpheroConnect.class);
                 cordova.getActivity().startActivity(intent);
-            }catch (Exception e){
-                result = Arrays.toString(e.getStackTrace());
+            } catch (Exception e) {
+                result = Arrays.toString(e.getStackTrace()) + e.toString();
             }
             a++;
             alert(a.toString(), result, "tu", callbackContext);
