@@ -8,8 +8,7 @@
   },
   "keywords": [
     "cordova",
-    "sphero",
-    "ecosystem:cordova"
+    "sphero"
   ],
   "cordova": {
     "id": "cordova-plugin-sphero",
@@ -19,7 +18,6 @@
   },
   "devDependencies": {
     "cordova": "^5.1.1",
-    "cordova-parametic": "vjrantal/cordova-paramedic",
     "grunt": "^0.4.5",
     "grunt-jscodesniffer": "^0.1.10",
     "grunt-contrib-jshint": "^0.10.0",
