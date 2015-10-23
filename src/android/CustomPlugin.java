@@ -34,7 +34,8 @@ public class CustomPlugin extends CordovaPlugin {
             // print your log here...
             String result = "";
             try{
-                new SpheroConnect();
+                Intent intent=new Intent(getApplicationContext(),SpheroConnect.class);
+                cordova.getActivity().startActivity(intent);
             }catch (Exception e){
                 result = Arrays.toString(e.getStackTrace());
             }
@@ -44,6 +45,10 @@ public class CustomPlugin extends CordovaPlugin {
             return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
+    }
+
+    private Context getApplicationContext() {
+        return this.cordova.getActivity().getApplicationContext();
     }
 
     private synchronized void alert(final String title,
