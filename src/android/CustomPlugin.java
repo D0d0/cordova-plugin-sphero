@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Context;
-import android.os.Handler;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -30,7 +29,7 @@ public class CustomPlugin extends CordovaPlugin {
             a++;
             String err = "";
             try {
-                new SpheroConnect(callbackContext, cordova.getActivity().getApplicationContext()).execute();
+                new SpheroConnect(callbackContext, getApplicationContext()).execute();
             } catch (Exception e) {
                 err = e.getMessage();
             }

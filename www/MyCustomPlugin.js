@@ -1,6 +1,5 @@
 var MyCustomPlugin = {
     PrintLog: function (successCallback, errorCallback, action, args) {
-        console.log('test');
         args = args || [];
         cordova.exec(
             successCallback, // success callback function

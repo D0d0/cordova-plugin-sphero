@@ -1,5 +1,6 @@
 package com.example.myplugin;
 
+import com.orbotix.classic.DiscoveryAgentClassic;
 import org.apache.cordova.CallbackContext;
 import android.os.AsyncTask;
 import android.content.Context;
@@ -23,7 +24,7 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
     public SpheroConnect(CallbackContext callbackContext, Context c) {
         this.callbackContext = callbackContext;
         try {
-            DualStackDiscoveryAgent.getInstance().startDiscovery(c);
+            DiscoveryAgentClassic.getInstance().startDiscovery(c);
         }catch (Exception e){
             callbackContext.success();
         }
@@ -31,14 +32,11 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     @Override
     public String doInBackground(String... arg0) {
-        DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
+        DiscoveryAgentClassic.getInstance().addRobotStateListener(new RobotChangedStateListener() {
             @Override
             public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                 switch (type) {
                     case Online:
-                        /*if (robot instanceof RobotLE) {
-                            ((RobotLE) robot).setDeveloperMode(true);
-                        }
 
                         //Save the robot as a ConvenienceRobot for additional utility methods
                         mRobot = new ConvenienceRobot(robot);
@@ -46,8 +44,8 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
                         mRobot.isConnected();
 
                         mRobot.setLed(0.0f, 0.0f, 1.0f);
-                        mRobot.drive(90.0f, 5.0f);*/
-                        callbackContext.success();
+                        mRobot.drive(90.0f, 5.0f);
+                        callbackContext.success();*/
                     case Disconnected:
                         break;
                 }
