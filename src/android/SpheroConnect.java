@@ -18,9 +18,9 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     private CallbackContext callbackContext;
 
-    public SpheroConnect(CallbackContext callbackContext,) {
+    public SpheroConnect(CallbackContext callbackContext, Context c) {
         this.callbackContext = callbackContext;
-        DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
+        DualStackDiscoveryAgent.getInstance().startDiscovery(c);
     }
 
     @Override
