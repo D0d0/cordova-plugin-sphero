@@ -12,13 +12,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.String;
+
 public class CustomPlugin extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
-            alert('Ahoj', 'Ahoj', 'tu', callbackContext);
+            alert("Ahoj", "Ahoj", "tu", callbackContext);
             callbackContext.success();
             return true;
         }
