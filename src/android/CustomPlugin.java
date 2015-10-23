@@ -1,22 +1,14 @@
 package com.example.myplugin;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.Context;
-
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.lang.Exception;
-import java.lang.Integer;
-import java.lang.String;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 
 public class CustomPlugin extends CordovaPlugin {
 

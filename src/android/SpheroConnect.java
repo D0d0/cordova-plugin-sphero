@@ -1,19 +1,14 @@
 package com.example.myplugin;
 
-import com.orbotix.classic.DiscoveryAgentClassic;
 import org.apache.cordova.CallbackContext;
-import android.os.AsyncTask;
-import android.content.Context;
 
+import android.content.Context;
+import android.os.AsyncTask;
 
 import com.orbotix.ConvenienceRobot;
-import com.orbotix.DualStackDiscoveryAgent;
-import com.orbotix.common.DiscoveryException;
+import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
-import com.orbotix.le.RobotLE;
-
-import java.lang.Exception;
 
 public class SpheroConnect extends AsyncTask<String, String, String> {
 
