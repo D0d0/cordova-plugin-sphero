@@ -45,17 +45,12 @@ public class CustomPlugin extends CordovaPlugin {
                             case Online:
                             /*if (robot instanceof RobotLE) {
                                 ((RobotLE) robot).setDeveloperMode(true);
-                            }
+                            }*/
 
                             //Save the robot as a ConvenienceRobot for additional utility methods
                             mRobot = new ConvenienceRobot(robot);
-                            final Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    mRobot.setLed(0.0f, 0.0f, 1.0f);
-                                }
-                            }, 2000);
-                            break;*/
+
+                            mRobot.setLed(0.0f, 0.0f, 1.0f);
                             case Disconnected:
                                 break;
                         }
