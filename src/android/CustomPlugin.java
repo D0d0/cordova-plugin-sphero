@@ -8,13 +8,14 @@ import org.json.JSONException;
 
 public class CustomPlugin extends CordovaPlugin {
 
-   @Override
-   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    if ("beep".equals(action)) {
-        // print your log here... 
-        callbackContext.success();
-        return true;
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if ("beep".equals(action)) {
+            // print your log here...
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, new JSONArray("test")));
+            callbackContext.success();
+            return true;
+        }
+        return false;  // Returning false results in a "MethodNotFound" error.
     }
-    return false;  // Returning false results in a "MethodNotFound" error.
-    }
- }
+}
