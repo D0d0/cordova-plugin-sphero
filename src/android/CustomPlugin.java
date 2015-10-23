@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 
@@ -29,9 +30,14 @@ public class CustomPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
-            new SpheroConnect(getApplicationContext());
+            String result = "";
+            try{
+                new SpheroConnect(getApplicationContext());
+            }catch (Exception e){
+                result = e.toString();
+            }
             a++;
-            alert(a.toString(), a.toString(), "tu", callbackContext);
+            alert(a.toString(), result, "tu", callbackContext);
             callbackContext.success();
             return true;
         }
