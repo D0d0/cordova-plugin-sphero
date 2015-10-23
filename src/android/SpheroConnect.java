@@ -31,12 +31,12 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     @Override
     public String doInBackground(String... arg0) {
-        /*DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
+        DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
             @Override
             public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                 switch (type) {
                     case Online:
-                        if (robot instanceof RobotLE) {
+                        /*if (robot instanceof RobotLE) {
                             ((RobotLE) robot).setDeveloperMode(true);
                         }
 
@@ -46,13 +46,13 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
                         mRobot.isConnected();
 
                         mRobot.setLed(0.0f, 0.0f, 1.0f);
-                        mRobot.drive(90.0f, 5.0f);
+                        mRobot.drive(90.0f, 5.0f);*/
                         callbackContext.success();
                     case Disconnected:
                         break;
                 }
             }
-        });*/
+        });
         return null;
     }
 }
