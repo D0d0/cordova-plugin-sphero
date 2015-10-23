@@ -3,6 +3,7 @@ package com.example.myplugin;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import com.orbotix.classic.view.SpheroConnectionView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -27,6 +28,7 @@ public class CustomPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
+            new SpheroConnect();
             a++;
             alert(a.toString(), a.toString(), "tu", callbackContext);
             callbackContext.success();
