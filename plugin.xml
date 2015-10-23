@@ -9,7 +9,7 @@
     </engines>
 
     <js-module src="www/MyCustomPlugin.js" name="MyCustomPlugin">
-        <clobbers target="window.MyCustomPlugin" />
+        <clobbers target="window.MyCustomPlugin"/>
     </js-module>
     <platform name="android">
 
@@ -21,5 +21,9 @@
 
         <source-file src="src/android/CustomPlugin.java" target-dir="src/com/example/myplugin"/>
 
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        </config-file>
     </platform>
 </plugin>
