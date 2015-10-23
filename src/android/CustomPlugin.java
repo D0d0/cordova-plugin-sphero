@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.Integer;
 import java.lang.String;
 
 import com.orbotix.le.DiscoveryAgentLE;
@@ -20,11 +21,14 @@ import com.orbotix.common.RobotChangedStateListener;
 
 public class CustomPlugin extends CordovaPlugin {
 
+    Integer a = 1;
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
-            alert("Ahoj", "Ahoj", "tu", callbackContext);
+            a++;
+            alert(a.toString(), a.toString(), "tu", callbackContext);
             callbackContext.success();
             return true;
         }
