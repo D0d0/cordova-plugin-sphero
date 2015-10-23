@@ -25,7 +25,7 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
         this.callbackContext = callbackContext;
         try {
             DiscoveryAgentClassic.getInstance().startDiscovery(c);
-        }catch (Exception e){
+        } catch (Exception e) {
             callbackContext.success();
         }
     }
