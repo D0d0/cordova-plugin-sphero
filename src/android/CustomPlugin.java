@@ -14,6 +14,10 @@ import org.json.JSONObject;
 
 import java.lang.String;
 
+import com.orbotix.le.DiscoveryAgentLE;
+import com.orbotix.le.RobotLE;
+import com.orbotix.common.RobotChangedStateListener;
+
 public class CustomPlugin extends CordovaPlugin {
 
     @Override
