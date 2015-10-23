@@ -18,10 +18,29 @@ public class CustomPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
-            callbackContext.sendPluginResult(new PluginResult(Status.OK, new JSONArray("test")));
+            alert('Ahoj', 'Ahoj', 'tu', callbackContext);
             callbackContext.success();
             return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
     }
+
+    private synchronized void alert(final String title,
+                                    final String message,
+                                    final String buttonLabel,
+                                    final CallbackContext callbackContext) {
+        new AlertDialog.Builder(cordova.getActivity())
+                .setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+                .setNeutralButton(buttonLabel, new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dialogInterface.dismiss();
+                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 0));
+                    }
+                })
+                .create()
+                .show();
+    }
+
 }
