@@ -47,10 +47,11 @@ public class CustomPlugin extends CordovaPlugin {
                                 ((RobotLE) robot).setDeveloperMode(true);
                             }*/
 
-                            //Save the robot as a ConvenienceRobot for additional utility methods
-                            mRobot = new ConvenienceRobot(robot);
+                                //Save the robot as a ConvenienceRobot for additional utility methods
+                                mRobot = new ConvenienceRobot(robot);
 
-                            mRobot.setLed(0.0f, 0.0f, 1.0f);
+                                mRobot.setLed(0.0f, 0.0f, 1.0f);
+                                mRobot.drive(90.0f, 5.0f);
                             case Disconnected:
                                 break;
                         }
