@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Context;
-android.content.Intent
+import android.content.Intent
 import com.orbotix.classic.view.SpheroConnectionView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
