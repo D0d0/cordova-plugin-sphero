@@ -16,13 +16,13 @@ public class SpheroConnect implements RobotChangedStateListener {
 
     private ConvenienceRobot mRobot;
 
-    public SpheroConnect(Context c) {
+    public SpheroConnect() {
 
         DualStackDiscoveryAgent.getInstance().addRobotStateListener(this);
 
         if (!DualStackDiscoveryAgent.getInstance().isDiscovering()) {
             try {
-                DualStackDiscoveryAgent.getInstance().startDiscovery(c);
+                DualStackDiscoveryAgent.getInstance().startDiscovery();
             } catch (DiscoveryException e) {
 
             }
