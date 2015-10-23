@@ -7,7 +7,7 @@ var MyCustomPlugin = {
             errorCallback, // error callback function
             'CustomPlugin', // mapped to our native Java class called
             action, // with this action name , in this case 'beep'
-            args)// arguments, if needed
+            args);// arguments, if needed
     }
 };
 

@@ -21,7 +21,6 @@
 
         <source-file src="src/android/lib/RobotLibrary.jar" target-dir="libs" />
         <source-file src="src/android/CustomPlugin.java" target-dir="src/com/example/myplugin"/>
-        <source-file src="src/android/SpheroConnect.java" target-dir="src/com/example/myplugin"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH"/>

@@ -21,23 +21,31 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 
-import com.orbotix.le.DiscoveryAgentLE;
-import com.orbotix.le.RobotLE;
+import com.orbotix.ConvenienceRobot;
+import com.orbotix.DualStackDiscoveryAgent;
+import com.orbotix.common.DiscoveryException;
+import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
+import com.orbotix.le.RobotLE;
 
-public class CustomPlugin extends CordovaPlugin {
+public class CustomPlugin extends CordovaPlugin implements RobotChangedStateListener {
 
     Integer a = 1;
+    private ConvenienceRobot mRobot;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        DualStackDiscoveryAgent.getInstance().addRobotStateListener(this);
+
         if ("beep".equals(action)) {
             // print your log here...
             String result = "";
             try {
-                new SpheroConnect(getApplicationContext());
+                if (!DualStackDiscoveryAgent.getInstance().isDiscovering()) {
+                    DualStackDiscoveryAgent.getInstance().startDiscovery(getApplicationContext());
+                }
             } catch (Exception e) {
-                result = Arrays.toString(e.getStackTrace()) + e.toString();
+                result = Arrays.toString(e.getMessage());
             }
             a++;
             alert(a.toString(), result, "tu", callbackContext);
@@ -48,7 +56,7 @@ public class CustomPlugin extends CordovaPlugin {
     }
 
     private Context getApplicationContext() {
-        return this.cordova.getActivity().getApplicationContext();
+        return cordova.getActivity().getApplicationContext();
     }
 
     private synchronized void alert(final String title,
@@ -67,6 +75,45 @@ public class CustomPlugin extends CordovaPlugin {
                 })
                 .create()
                 .show();
+    }
+
+    private void blink(final boolean lit) {
+        if (mRobot == null)
+            return;
+
+        if (lit) {
+            mRobot.setLed(0.0f, 0.0f, 0.0f);
+        } else {
+            mRobot.setLed(0.0f, 0.0f, 1.0f);
+        }
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                blink(!lit);
+            }
+        }, 2000);
+    }
+
+    @Override
+    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
+        switch (type) {
+            case Online: {
+
+                //If robot uses Bluetooth LE, Developer Mode can be turned on.
+                //This turns off DOS protection. This generally isn't required.
+                if (robot instanceof RobotLE) {
+                    ((RobotLE) robot).setDeveloperMode(true);
+                }
+
+                //Save the robot as a ConvenienceRobot for additional utility methods
+                mRobot = new ConvenienceRobot(robot);
+
+                //Start blinking the robot's LED
+                blink(false);
+                break;
+            }
+        }
     }
 
 }
