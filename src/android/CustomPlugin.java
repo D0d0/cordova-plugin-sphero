@@ -3,6 +3,7 @@ package com.example.myplugin;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Context;
 import com.orbotix.classic.view.SpheroConnectionView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -28,13 +29,17 @@ public class CustomPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("beep".equals(action)) {
             // print your log here...
-            new SpheroConnect();
+            new SpheroConnect(getApplicationContext());
             a++;
             alert(a.toString(), a.toString(), "tu", callbackContext);
             callbackContext.success();
             return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
+    }
+
+    private Context getApplicationContext() {
+        return this.cordova.getActivity().getApplicationContext();
     }
 
     private synchronized void alert(final String title,
