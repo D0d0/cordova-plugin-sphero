@@ -22,16 +22,16 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     public SpheroConnect(CallbackContext callbackContext, Context c) {
         this.callbackContext = callbackContext;
-        try {
+        /*try {
             DualStackDiscoveryAgent.getInstance().startDiscovery(c);
         }catch (Exception e){
             callbackContext.success();
-        }
+        }*/
     }
 
     @Override
     public String doInBackground(String... arg0) {
-        DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
+        /*DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
             @Override
             public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                 switch (type) {
@@ -52,7 +52,7 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
                         break;
                 }
             }
-        });
+        });*/callbackContext.success();
         return null;
     }
 }
