@@ -22,7 +22,7 @@ public class SpheroConnect implements RobotChangedStateListener {
 
         if (!DualStackDiscoveryAgent.getInstance().isDiscovering()) {
             try {
-                DualStackDiscoveryAgent.getInstance().startDiscovery(getApplicationContext());
+                DualStackDiscoveryAgent.getInstance().startDiscovery(this);
             } catch (DiscoveryException e) {
 
             }
