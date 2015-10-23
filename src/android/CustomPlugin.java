@@ -5,7 +5,9 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
-import com.orbotix.classic.view.SpheroConnectionView;
+import android.os.Handler;
+
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -27,6 +29,7 @@ import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.orbotix.le.RobotLE;
+import com.orbotix.classic.view.SpheroConnectionView;
 
 public class CustomPlugin extends CordovaPlugin implements RobotChangedStateListener {
 
@@ -45,7 +48,7 @@ public class CustomPlugin extends CordovaPlugin implements RobotChangedStateList
                     DualStackDiscoveryAgent.getInstance().startDiscovery(getApplicationContext());
                 }
             } catch (Exception e) {
-                result = Arrays.toString(e.getMessage());
+                result = e.getMessage();
             }
             a++;
             alert(a.toString(), result, "tu", callbackContext);
