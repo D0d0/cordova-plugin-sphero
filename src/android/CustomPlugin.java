@@ -37,9 +37,10 @@ public class CustomPlugin extends CordovaPlugin {
             } catch (Exception e) {
                 err = e.getMessage();
             }
-            DualStackDiscoveryAgent.getInstance().addRobotStateListenernew(RobotChangedStateListener() {
+            DualStackDiscoveryAgent.getInstance().addRobotStateListenernew(new RobotChangedStateListener() {
+
                 @Override
-                public void handleRobotChangedState (Robot robot, RobotChangedStateNotificationType type){
+                public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                     switch (type) {
                         case Online:
                             robot.setLed(0.0f, 0.0f, 1.0f);
