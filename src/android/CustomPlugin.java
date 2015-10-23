@@ -35,8 +35,7 @@ public class CustomPlugin extends CordovaPlugin {
             // print your log here...
             String result = "";
             try {
-                Intent intent = new Intent(getApplicationContext(), SpheroConnect.class);
-                cordova.getActivity().startActivity(intent);
+                new SpheroConnect(getApplicationContext());
             } catch (Exception e) {
                 result = Arrays.toString(e.getStackTrace()) + e.toString();
             }

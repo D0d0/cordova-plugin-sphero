@@ -1,6 +1,7 @@
 package com.example.myplugin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,17 +17,17 @@ import com.orbotix.le.RobotLE;
  * Hello World Sample
  * Connect either a Bluetooth Classic or Bluetooth LE robot to an Android Device, then
  * blink the robot's LED on or off every two seconds.
- *
+ * <p>
  * This example also covers turning on Developer Mode for LE robots.
  */
 
-public class SpheroConnect extends Activity implements RobotChangedStateListener {
+public class SpheroConnect implements RobotChangedStateListener {
 
     private ConvenienceRobot mRobot;
 
-    @Override
-    protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
+    private Context c;
+
+    public SpheroConnect(Context c) {
 
         /*
             Associate a listener for robot state changes with the DualStackDiscoveryAgent.
@@ -34,18 +35,22 @@ public class SpheroConnect extends Activity implements RobotChangedStateListener
             DiscoveryAgentClassic checks only for Bluetooth Classic robots.
             DiscoveryAgentLE checks only for Bluetooth LE robots.
        */
-        DualStackDiscoveryAgent.getInstance().addRobotStateListener( this );
+        DualStackDiscoveryAgent.getInstance().addRobotStateListener(this);
+
+        this.c = c;
+
+        start();
     }
 
     //Turn the robot LED on or off every two seconds
-    private void blink( final boolean lit ) {
-        if( mRobot == null )
+    private void blink(final boolean lit) {
+        if (mRobot == null)
             return;
 
-        if( lit ) {
-            mRobot.setLed( 0.0f, 0.0f, 0.0f );
+        if (lit) {
+            mRobot.setLed(0.0f, 0.0f, 0.0f);
         } else {
-            mRobot.setLed( 0.0f, 0.0f, 1.0f );
+            mRobot.setLed(0.0f, 0.0f, 1.0f);
         }
 
         final Handler handler = new Handler();
@@ -56,14 +61,11 @@ public class SpheroConnect extends Activity implements RobotChangedStateListener
         }, 2000);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
+    public void start() {
         //If the DiscoveryAgent is not already looking for robots, start discovery.
-        if( !DualStackDiscoveryAgent.getInstance().isDiscovering() ) {
+        if (!DualStackDiscoveryAgent.getInstance().isDiscovering()) {
             try {
-                DualStackDiscoveryAgent.getInstance().startDiscovery(getApplicationContext());
+                DualStackDiscoveryAgent.getInstance().startDiscovery(this.c);
             } catch (DiscoveryException e) {
                 Log.e("Sphero", "DiscoveryException: " + e.getMessage());
             }
@@ -71,43 +73,21 @@ public class SpheroConnect extends Activity implements RobotChangedStateListener
     }
 
     @Override
-    protected void onStop() {
-        //If the DiscoveryAgent is in discovery mode, stop it.
-        if( DualStackDiscoveryAgent.getInstance().isDiscovering() ) {
-            DualStackDiscoveryAgent.getInstance().stopDiscovery();
-        }
-
-        //If a robot is connected to the device, disconnect it
-        if( mRobot != null ) {
-            mRobot.disconnect();
-            mRobot = null;
-        }
-
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        DualStackDiscoveryAgent.getInstance().addRobotStateListener(null);
-    }
-
-    @Override
-    public void handleRobotChangedState( Robot robot, RobotChangedStateNotificationType type ) {
-        switch( type ) {
+    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
+        switch (type) {
             case Online: {
 
                 //If robot uses Bluetooth LE, Developer Mode can be turned on.
                 //This turns off DOS protection. This generally isn't required.
-                if( robot instanceof RobotLE) {
-                    ( (RobotLE) robot ).setDeveloperMode( true );
+                if (robot instanceof RobotLE) {
+                    ((RobotLE) robot).setDeveloperMode(true);
                 }
 
                 //Save the robot as a ConvenienceRobot for additional utility methods
-                mRobot = new ConvenienceRobot( robot );
+                mRobot = new ConvenienceRobot(robot);
 
                 //Start blinking the robot's LED
-                blink( false );
+                blink(false);
                 break;
             }
         }
