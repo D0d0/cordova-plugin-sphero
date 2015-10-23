@@ -41,18 +41,17 @@ public class CustomPlugin extends CordovaPlugin {
             } catch (Exception e) {
                 err = e.getMessage();
             }
-            DualStackDiscoveryAgent.getInstance().addRobotStateListenernew(new RobotChangedStateListener() {
-
+            DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
                 @Override
                 public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                     switch (type) {
                         case Online:
-                            if( robot instanceof RobotLE) {
-                                ( (RobotLE) robot ).setDeveloperMode( true );
+                            if (robot instanceof RobotLE) {
+                                ((RobotLE) robot).setDeveloperMode(true);
                             }
 
                             //Save the robot as a ConvenienceRobot for additional utility methods
-                            mRobot = new ConvenienceRobot( robot );
+                            mRobot = new ConvenienceRobot(robot);
                             mRobot.setLed(0.0f, 0.0f, 1.0f);
                             break;
                         case Disconnected:
