@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
@@ -34,7 +36,7 @@ public class CustomPlugin extends CordovaPlugin {
             try{
                 new SpheroConnect(getApplicationContext());
             }catch (Exception e){
-                result = e.toString();
+                result = Arrays.toString(e.getStackTrace());
             }
             a++;
             alert(a.toString(), result, "tu", callbackContext);
