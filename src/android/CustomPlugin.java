@@ -50,8 +50,12 @@ public class CustomPlugin extends CordovaPlugin {
                                 //Save the robot as a ConvenienceRobot for additional utility methods
                                 mRobot = new ConvenienceRobot(robot);
 
+                                mRobot.isConnected();
+
                                 mRobot.setLed(0.0f, 0.0f, 1.0f);
                                 mRobot.drive(90.0f, 5.0f);
+                                alert(a.toString(), err, "tu", callbackContext);
+                                callbackContext.success();
                             case Disconnected:
                                 break;
                         }
@@ -61,8 +65,6 @@ public class CustomPlugin extends CordovaPlugin {
             } catch (Exception e) {
                 err = e.getMessage();
             }
-            alert(a.toString(), err, "tu", callbackContext);
-            callbackContext.success();
             return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
