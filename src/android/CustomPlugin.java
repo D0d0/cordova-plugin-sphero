@@ -18,9 +18,12 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.String;
 
-import com.orbotix.le.DiscoveryAgentLE;
-import com.orbotix.le.RobotLE;
+import com.orbotix.ConvenienceRobot;
+import com.orbotix.DualStackDiscoveryAgent;
+import com.orbotix.common.DiscoveryException;
+import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
+import com.orbotix.le.RobotLE;
 
 public class CustomPlugin extends CordovaPlugin {
 
