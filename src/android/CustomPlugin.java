@@ -28,6 +28,7 @@ import com.orbotix.le.RobotLE;
 public class CustomPlugin extends CordovaPlugin {
 
     Integer a = 1;
+    private ConvenienceRobot mRobot;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -46,7 +47,13 @@ public class CustomPlugin extends CordovaPlugin {
                 public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
                     switch (type) {
                         case Online:
-                            robot.setLed(0.0f, 0.0f, 1.0f);
+                            if( robot instanceof RobotLE) {
+                                ( (RobotLE) robot ).setDeveloperMode( true );
+                            }
+
+                            //Save the robot as a ConvenienceRobot for additional utility methods
+                            mRobot = new ConvenienceRobot( robot );
+                            mRobot.setLed(0.0f, 0.0f, 1.0f);
                             break;
                         case Disconnected:
                             break;
