@@ -128,8 +128,8 @@ public class DualStackDiscoveryAgentM implements DiscoveryAgent, RobotChangedSta
     }
 
     public boolean startDiscovery() {
-        boolean var2 = this.d.startDiscovery(this.c);
-        boolean var3 = this.e.startDiscovery(this.c);
+        boolean var2 = this.d.startDiscovery();
+        boolean var3 = this.e.startDiscovery();
         if (var2 || var3) {
             this.a(true);
         }
