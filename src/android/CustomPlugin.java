@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Context;
+import android.os.Handler;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -40,7 +41,7 @@ public class CustomPlugin extends CordovaPlugin {
                 DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
             } catch (Exception e) {
                 err = e.getMessage();
-            }
+            }/*
             DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
                 @Override
                 public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
@@ -52,13 +53,18 @@ public class CustomPlugin extends CordovaPlugin {
 
                             //Save the robot as a ConvenienceRobot for additional utility methods
                             mRobot = new ConvenienceRobot(robot);
-                            mRobot.setLed(0.0f, 0.0f, 1.0f);
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    mRobot.setLed(0.0f, 0.0f, 1.0f);
+                                }
+                            }, 2000);
                             break;
                         case Disconnected:
                             break;
                     }
                 }
-            });
+            });*/
             alert(a.toString(), err, "tu", callbackContext);
             callbackContext.success();
             return true;
