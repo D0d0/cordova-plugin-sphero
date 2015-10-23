@@ -37,11 +37,11 @@ public class CustomPlugin extends CordovaPlugin {
             // print your log here...
             a++;
             String err = "";
-            try {
+          /*  try {
                 DualStackDiscoveryAgent.getInstance().startDiscovery(cordova.getActivity().getApplicationContext());
             } catch (Exception e) {
                 err = e.getMessage();
-            }/*
+            }
             DualStackDiscoveryAgent.getInstance().addRobotStateListener(new RobotChangedStateListener() {
                 @Override
                 public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
