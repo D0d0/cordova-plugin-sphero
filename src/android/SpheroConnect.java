@@ -16,8 +16,12 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     private CallbackContext callbackContext;
 
-    public SpheroConnect(CallbackContext callbackContext, Context c) {
+    private CustomPlugin customPlugin;
+
+    public SpheroConnect(CallbackContext callbackContext, Context c,
+                         CustomPlugin customPlugin) {
         this.callbackContext = callbackContext;
+        this.customPlugin = customPlugin;
         try {
             DiscoveryAgentClassic.getInstance().startDiscovery(c);
         } catch (Exception e) {
@@ -27,25 +31,36 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     @Override
     public String doInBackground(String... arg0) {
-        DiscoveryAgentClassic.getInstance().addRobotStateListener(new RobotChangedStateListener() {
-            @Override
-            public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
-                switch (type) {
-                    case Online:
+        DiscoveryAgentClassic.getInstance().addRobotStateListener(
+                new RobotChangedStateListener() {
+                    @Override
+                    public void handleRobotChangedState(Robot robot,
+                                                        RobotChangedStateNotificationType type) {
+                        switch (type) {
+                            case Online:
 
-                        //Save the robot as a ConvenienceRobot for additional utility methods
-                        mRobot = new ConvenienceRobot(robot);
+                                // Save the robot as a ConvenienceRobot for
+                                // additional utility methods
+                                mRobot = new ConvenienceRobot(robot);
+                                customPlugin.setRobot(mRobot);
 
-                        mRobot.isConnected();
+                                mRobot.isConnected();
 
-                        mRobot.setLed(0.0f, 0.0f, 1.0f);
-                        mRobot.drive(90.0f, 5.0f);
-                        callbackContext.success();
-                    case Disconnected:
-                        break;
-                }
-            }
-        });
+                                mRobot.setLed(0.0f, 0.0f, 1.0f);
+                                mRobot.drive(90.0f, 5.0f);
+                                if (DiscoveryAgentClassic.getInstance()
+                                        .isDiscovering()) {
+                                    DiscoveryAgentClassic.getInstance()
+                                            .stopDiscovery();
+                                }
+                                callbackContext.success();
+                            case Disconnected:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
         return null;
     }
 }
