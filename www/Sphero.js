@@ -1,5 +1,5 @@
-var MyCustomPlugin = {
-    PrintLog: function (successCallback, errorCallback, action, args) {
+var Sphero = {
+    connect: function (successCallback, errorCallback, action, args) {
         args = args || [];
         cordova.exec(
             successCallback, // success callback function
@@ -10,4 +10,4 @@ var MyCustomPlugin = {
     }
 };
 
-module.exports = MyCustomPlugin;
+module.exports = Sphero;

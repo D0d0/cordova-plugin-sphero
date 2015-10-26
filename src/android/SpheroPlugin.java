@@ -1,4 +1,4 @@
-package com.example.myplugin;
+package com.cordova.sphero;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -16,7 +16,7 @@ public class CustomPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args,
                            CallbackContext callbackContext) throws JSONException {
-        if ("beep".equals(action)) {
+        if ("connect".equals(action)) {
             // print your log here...
             try {
                 new SpheroConnect(callbackContext, getApplicationContext(),

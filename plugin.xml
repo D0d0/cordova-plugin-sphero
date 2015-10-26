@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.example.plugin"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.cordova.sphero"
         version="0.0.1">
-    <name>Cordova Plugin</name>
+    <name>Sphero Cordova plugin</name>
+    <repo>https://github.com/D0d0/cordova-plugin-sphero.git</repo>
 
     <engines>
         <engine name="cordova" version=">=3.4.0"/>
     </engines>
 
-    <js-module src="www/MyCustomPlugin.js" name="MyCustomPlugin">
-        <clobbers target="window.MyCustomPlugin"/>
+    <js-module src="www/Sphero.js" name="Sphero">
+        <clobbers target="window.Sphero"/>
     </js-module>
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="CustomPlugin">
-                <param name="android-package" value="com.example.myplugin.CustomPlugin"/>
+                <param name="android-package" value="com.cordova.sphero.SpheroPlugin"/>
             </feature>
         </config-file>
 
         <source-file src="src/android/lib/RobotLibrary.jar" target-dir="libs" />
-        <source-file src="src/android/CustomPlugin.java" target-dir="src/com/example/myplugin"/>
-        <source-file src="src/android/SpheroConnect.java" target-dir="src/com/example/myplugin"/>
+        <source-file src="src/android/SpheroPlugin.java" target-dir="src/com/cordova/sphero"/>
+        <source-file src="src/android/SpheroConnect.java" target-dir="src/com/cordova/sphero"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH"/>

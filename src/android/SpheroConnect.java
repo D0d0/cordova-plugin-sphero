@@ -1,4 +1,4 @@
-package com.example.myplugin;
+package com.cordova.sphero;
 
 import org.apache.cordova.CallbackContext;
 
