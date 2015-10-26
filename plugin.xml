@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.cordova.sphero"
+        id="com.plugin.sphero"
         version="0.0.1">
     <name>Sphero Cordova plugin</name>
     <repo>https://github.com/D0d0/cordova-plugin-sphero.git</repo>
@@ -16,14 +16,14 @@
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="CustomPlugin">
-                <param name="android-package" value="com.cordova.sphero.SpheroPlugin"/>
+            <feature name="SpheroPlugin">
+                <param name="android-package" value="com.plugin.sphero.SpheroPlugin"/>
             </feature>
         </config-file>
 
         <source-file src="src/android/lib/RobotLibrary.jar" target-dir="libs" />
-        <source-file src="src/android/SpheroPlugin.java" target-dir="src/com/cordova/sphero"/>
-        <source-file src="src/android/SpheroConnect.java" target-dir="src/com/cordova/sphero"/>
+        <source-file src="src/android/SpheroPlugin.java" target-dir="src/com/plugin/sphero"/>
+        <source-file src="src/android/SpheroConnect.java" target-dir="src/com/plugin/sphero"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH"/>

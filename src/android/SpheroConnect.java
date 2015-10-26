@@ -1,4 +1,4 @@
-package com.cordova.sphero;
+package com.plugin.sphero;
 
 import org.apache.cordova.CallbackContext;
 
