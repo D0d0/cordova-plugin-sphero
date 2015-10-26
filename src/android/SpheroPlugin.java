@@ -9,7 +9,7 @@ import android.content.Context;
 
 import com.orbotix.ConvenienceRobot;
 
-public class CustomPlugin extends CordovaPlugin {
+public class SpheroPlugin extends CordovaPlugin {
 
     private ConvenienceRobot mRobot;
 

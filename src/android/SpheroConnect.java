@@ -16,12 +16,12 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
     private CallbackContext callbackContext;
 
-    private CustomPlugin customPlugin;
+    private SpheroPlugin spheroPlugin;
 
     public SpheroConnect(CallbackContext callbackContext, Context c,
-                         CustomPlugin customPlugin) {
+                         SpheroPlugin customPlugin) {
         this.callbackContext = callbackContext;
-        this.customPlugin = customPlugin;
+        this.spheroPlugin = customPlugin;
         try {
             DiscoveryAgentClassic.getInstance().startDiscovery(c);
         } catch (Exception e) {
@@ -42,7 +42,7 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
                                 // Save the robot as a ConvenienceRobot for
                                 // additional utility methods
                                 mRobot = new ConvenienceRobot(robot);
-                                customPlugin.setRobot(mRobot);
+                                spheroPlugin.setRobot(mRobot);
 
                                 mRobot.isConnected();
 
