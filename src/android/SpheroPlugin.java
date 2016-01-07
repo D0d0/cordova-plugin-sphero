@@ -17,15 +17,25 @@ public class SpheroPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args,
                            CallbackContext callbackContext) throws JSONException {
         if ("connect".equals(action)) {
-            // print your log here...
             try {
                 new SpheroConnect(callbackContext, getApplicationContext(),
                         this).execute();
             } catch (Exception e) {
 
             }
+
             return true;
         }
+
+        if ("disconnect".equals(action)) {
+            if (mRobot != null) {
+                mRobot.disconnect();
+                mRobot = null;
+            }
+
+            return true;
+        }
+
         return false; // Returning false results in a "MethodNotFound" error.
     }
 
