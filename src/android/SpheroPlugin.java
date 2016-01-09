@@ -17,26 +17,47 @@ public class SpheroPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args,
                            CallbackContext callbackContext) throws JSONException {
         if ("connect".equals(action)) {
-            try {
-                new SpheroConnect(callbackContext, getApplicationContext(),
-                        this).execute();
-            } catch (Exception e) {
-
-            }
+            connect(callbackContext);
 
             return true;
         }
 
         if ("disconnect".equals(action)) {
-            if (mRobot != null) {
-                mRobot.disconnect();
-                mRobot = null;
-            }
+            disconnect();
 
             return true;
         }
 
-        return false; // Returning false results in a "MethodNotFound" error.
+        if ("changeColor".equals(action)) {
+            changeColor(args);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void connect(CallbackContext callbackContext) {
+        try {
+            new SpheroConnect(callbackContext, getApplicationContext(),
+                    this).execute();
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void disconnect() {
+        if (mRobot != null) {
+            mRobot.disconnect();
+            mRobot = null;
+        }
+    }
+
+    private void changeColor(JSONArray args) {
+        if (mRobot != null) {
+
+            mRobot.setLed(args.getLong(0), args.getLong(1), args.getLong(2));
+        }
     }
 
     public void setRobot(ConvenienceRobot r) {

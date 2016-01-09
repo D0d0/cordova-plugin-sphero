@@ -2,8 +2,10 @@ var Sphero = {
     connect: function (successCallback, errorCallback, args) {
         args = args || [];
         cordova.exec(
-            successCallback, // success callback function
-            errorCallback, // error callback function
+            successCallback || function () {
+            }, // success callback function
+            errorCallback || function () {
+            }, // error callback function
             'SpheroPlugin', // mapped to our native Java class called
             'connect', // with this action name , in this case 'beep'
             args);// arguments, if needed
@@ -11,10 +13,24 @@ var Sphero = {
     disconnect: function (successCallback, errorCallback, args) {
         args = args || [];
         cordova.exec(
-            successCallback,
-            errorCallback,
+            successCallback || function () {
+            },
+            errorCallback || function () {
+            },
             'SpheroPlugin',
             'disconnect',
+            args
+        )
+    },
+    changeColor: function (successCallback, errorCallback, args) {
+        args = args || [];
+        cordova.exec(
+            successCallback || function () {
+            },
+            errorCallback || function () {
+            },
+            'SpheroPlugin',
+            'changeColor',
             args
         )
     }
