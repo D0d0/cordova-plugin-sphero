@@ -53,7 +53,7 @@ public class SpheroPlugin extends CordovaPlugin {
         }
     }
 
-    private void changeColor(JSONArray args) {
+    private void changeColor(JSONArray args) throws JSONException {
         if (mRobot != null) {
 
             mRobot.setLed(args.getLong(0), args.getLong(1), args.getLong(2));
