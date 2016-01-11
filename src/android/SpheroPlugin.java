@@ -38,11 +38,13 @@ public class SpheroPlugin extends CordovaPlugin {
     }
 
     private void connect(CallbackContext callbackContext) {
-        try {
-            new SpheroConnect(callbackContext, getApplicationContext(),
-                    this).execute();
-        } catch (Exception e) {
+        if (mRobot == null) {
+            try {
+                new SpheroConnect(callbackContext, getApplicationContext(),
+                        this).execute();
+            } catch (Exception e) {
 
+            }
         }
     }
 
