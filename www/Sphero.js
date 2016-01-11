@@ -8,8 +8,8 @@ var Sphero = {
     connect: function (successCallback, errorCallback, args) {
         args = args || [];
         cordova.exec(
-            successCallback(response) || this._successFunction(response),
-            errorCallback(error) || this._errorFunction(error),
+            successCallback || this._successFunction,
+            errorCallback || this._errorFunction,
             'SpheroPlugin',
             'connect',
             args);
@@ -17,8 +17,8 @@ var Sphero = {
     disconnect: function (successCallback, errorCallback, args) {
         args = args || [];
         cordova.exec(
-            successCallback(response) || this._successFunction(response),
-            errorCallback(error) || this._errorFunction(error),
+            successCallback || this._successFunction,
+            errorCallback || this._errorFunction,
             'SpheroPlugin',
             'disconnect',
             args
@@ -27,8 +27,8 @@ var Sphero = {
     changeColor: function (successCallback, errorCallback, args) {
         args = args || [];
         cordova.exec(
-            successCallback(response) || this._successFunction(response),
-            errorCallback(error) || this._errorFunction(error),
+            successCallback || this._successFunction,
+            errorCallback || this._errorFunction,
             'SpheroPlugin',
             'changeColor',
             args
