@@ -42,7 +42,7 @@ public class SpheroPlugin extends CordovaPlugin {
 
     private void connect(CallbackContext callbackContext) {
         if (mRobot == null) {
-            cordova.getActivity().runOnUiThread(new Runnable() {
+            cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     DiscoveryAgentClassic.getInstance().addRobotStateListener(
                             new RobotChangedStateListener() {
