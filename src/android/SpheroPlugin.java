@@ -4,13 +4,13 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.common.Robot;
-import com.orbotix.common.RobotChangedStateListener;
 
 import android.content.Context;
 
 import com.orbotix.ConvenienceRobot;
+import com.orbotix.classic.DiscoveryAgentClassic;
+import com.orbotix.common.Robot;
+import com.orbotix.common.RobotChangedStateListener;
 
 public class SpheroPlugin extends CordovaPlugin {
 
@@ -40,15 +40,16 @@ public class SpheroPlugin extends CordovaPlugin {
         return false;
     }
 
-    private void connect(CallbackContext callbackContext) {
+    private void connect(final CallbackContext callbackContext) {
         if (mRobot == null) {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     DiscoveryAgentClassic.getInstance().addRobotStateListener(
                             new RobotChangedStateListener() {
                                 @Override
-                                public void handleRobotChangedState(Robot robot,
-                                                                    RobotChangedStateNotificationType type) {
+                                public void handleRobotChangedState(
+                                        Robot robot,
+                                        RobotChangedStateNotificationType type) {
                                     switch (type) {
                                         case Online:
 
