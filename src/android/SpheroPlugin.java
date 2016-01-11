@@ -8,9 +8,6 @@ import org.json.JSONException;
 import android.content.Context;
 
 import com.orbotix.ConvenienceRobot;
-import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.common.Robot;
-import com.orbotix.common.RobotChangedStateListener;
 
 public class SpheroPlugin extends CordovaPlugin {
 
@@ -40,39 +37,12 @@ public class SpheroPlugin extends CordovaPlugin {
         return false;
     }
 
-    private void connect(final CallbackContext callbackContext) {
-        if (mRobot == null) {
-            cordova.getThreadPool().execute(new Runnable() {
-                public void run() {
-                    DiscoveryAgentClassic.getInstance().addRobotStateListener(
-                            new RobotChangedStateListener() {
-                                @Override
-                                public void handleRobotChangedState(
-                                        Robot robot,
-                                        RobotChangedStateNotificationType type) {
-                                    switch (type) {
-                                        case Online:
+    private void connect(CallbackContext callbackContext) {
+        try {
+            new SpheroConnect(callbackContext, getApplicationContext(),
+                    this).execute();
+        } catch (Exception e) {
 
-                                            // Save the robot as a ConvenienceRobot for
-                                            // additional utility methods
-                                            mRobot = new ConvenienceRobot(robot);
-
-                                            mRobot.setLed(0.0f, 0.0f, 1.0f);
-                                            if (DiscoveryAgentClassic.getInstance()
-                                                    .isDiscovering()) {
-                                                DiscoveryAgentClassic.getInstance()
-                                                        .stopDiscovery();
-                                            }
-                                            callbackContext.success();
-                                        case Disconnected:
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-                            });
-                }
-            });
         }
     }
 
