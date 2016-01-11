@@ -4,6 +4,9 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
+import com.orbotix.classic.DiscoveryAgentClassic;
+import com.orbotix.common.Robot;
+import com.orbotix.common.RobotChangedStateListener;
 
 import android.content.Context;
 
@@ -38,11 +41,37 @@ public class SpheroPlugin extends CordovaPlugin {
     }
 
     private void connect(CallbackContext callbackContext) {
-        try {
-            new SpheroConnect(callbackContext, getApplicationContext(),
-                    this).execute();
-        } catch (Exception e) {
+        if (mRobot == null) {
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    DiscoveryAgentClassic.getInstance().addRobotStateListener(
+                            new RobotChangedStateListener() {
+                                @Override
+                                public void handleRobotChangedState(Robot robot,
+                                                                    RobotChangedStateNotificationType type) {
+                                    switch (type) {
+                                        case Online:
 
+                                            // Save the robot as a ConvenienceRobot for
+                                            // additional utility methods
+                                            mRobot = new ConvenienceRobot(robot);
+
+                                            mRobot.setLed(0.0f, 0.0f, 1.0f);
+                                            if (DiscoveryAgentClassic.getInstance()
+                                                    .isDiscovering()) {
+                                                DiscoveryAgentClassic.getInstance()
+                                                        .stopDiscovery();
+                                            }
+                                            callbackContext.success();
+                                        case Disconnected:
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            });
+                }
+            });
         }
     }
 
