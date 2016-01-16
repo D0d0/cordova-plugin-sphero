@@ -45,33 +45,33 @@ public class MacroBuilder {
         }
     }
 
-    private static stopMacro(MacroObject macro) {
+    private static void stopMacro(MacroObject macro) {
         macro.addCommand(new Roll(0.0f, orientation, 255));
     }
 
-    private static setColor(MacroBuilder macro, int r, int g, int b) {
+    private static void setColor(MacroBuilder macro, int r, int g, int b) {
         macro.addCommand(new RGB(r, g, b, 255));
     }
 
-    private static moveForward(MacroObject macro) {
+    private static void  moveForward(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 0, 0));
         macro.addCommand(new Delay(700));
         orientation = 0;
     }
 
-    private static moveBackwards(MacroObject macro) {
+    private static void  moveBackwards(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 180, 0));
         macro.addCommand(new Delay(700));
         orientation = 180;
     }
 
-    private static moveLeft(MacroObject macro) {
+    private static void  moveLeft(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 270, 0));
         macro.addCommand(new Delay(700));
         orientation = 270;
     }
 
-    private static moveRight(MacroObject macro) {
+    private static void  moveRight(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 90, 0));
         macro.addCommand(new Delay(700));
         orientation = 90;
