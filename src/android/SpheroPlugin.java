@@ -42,7 +42,7 @@ public class SpheroPlugin extends CordovaPlugin {
         }
 
         if ("runMacro".equals(action)) {
-            runMacro();
+            runMacro(args);
 
             return true;
         }
@@ -81,9 +81,9 @@ public class SpheroPlugin extends CordovaPlugin {
         }
     }
 
-    public void runMacro() {
+    public void runMacro(JSONArray args) throws JSONException{
         if (mRobot != null) {
-            spheroMacro.runMacro();
+            spheroMacro.runMacro(args);
         }
     }
 
