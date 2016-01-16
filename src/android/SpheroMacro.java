@@ -79,7 +79,7 @@ public class SpheroMacro {
         //macro.addCommand(new Stabilization(true, 0));
 
         //Send the macro to the robot and play
-        MacroBuilder.buildMacro(macro, args)
+        MacroBuilder.buildMacro(macro, args);
         macro.setMode(MacroObject.MacroObjectMode.Normal);
         macro.setRobot(mRobot.getRobot());
         macro.playMacro();
