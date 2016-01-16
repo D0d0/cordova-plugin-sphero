@@ -53,25 +53,25 @@ public class MacroBuilder {
 
     private static void  moveForward(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 0, 0));
-        macro.addCommand(new Delay(700));
+        macro.addCommand(new Delay(1000));
         orientation = 0;
     }
 
     private static void  moveBackwards(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 180, 0));
-        macro.addCommand(new Delay(700));
+        macro.addCommand(new Delay(1000));
         orientation = 180;
     }
 
     private static void  moveLeft(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 270, 0));
-        macro.addCommand(new Delay(700));
+        macro.addCommand(new Delay(1000));
         orientation = 270;
     }
 
     private static void  moveRight(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 90, 0));
-        macro.addCommand(new Delay(700));
+        macro.addCommand(new Delay(1000));
         orientation = 90;
     }
 }
