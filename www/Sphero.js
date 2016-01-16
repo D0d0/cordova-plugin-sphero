@@ -39,6 +39,34 @@ var Sphero = {
             'changeColor',
             args
         )
+    },
+    setRobotToDefaultState: function (successCallback, errorCallback, args) {
+        args = args || [];
+        cordova.exec(
+            successCallback || function () {
+
+            },
+            errorCallback || function () {
+
+            },
+            'SpheroPlugin',
+            'setRobotToDefaultState',
+            args
+        )
+    },
+    runMacro: function (successCallback, errorCallback, args) {
+        args = args || [];
+        cordova.exec(
+            successCallback || function () {
+
+            },
+            errorCallback || function () {
+
+            },
+            'SpheroPlugin',
+            'runMacro',
+            args
+        )
     }
 };
 

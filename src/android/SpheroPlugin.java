@@ -12,6 +12,7 @@ import com.orbotix.ConvenienceRobot;
 public class SpheroPlugin extends CordovaPlugin {
 
     private ConvenienceRobot mRobot;
+    private SpheroMacro spheroMacro;
 
     @Override
     public boolean execute(String action, JSONArray args,
@@ -30,6 +31,18 @@ public class SpheroPlugin extends CordovaPlugin {
 
         if ("changeColor".equals(action)) {
             changeColor(args);
+
+            return true;
+        }
+
+        if ("setRobotToDefaultState".equals(action)) {
+            setRobotToDefaultState();
+
+            return true;
+        }
+
+        if ("runMacro".equals(action)) {
+            runMacro();
 
             return true;
         }
@@ -62,8 +75,21 @@ public class SpheroPlugin extends CordovaPlugin {
         }
     }
 
+    private void setRobotToDefaultState() {
+        if (mRobot != null) {
+            spheroMacro.setRobotToDefaultState();
+        }
+    }
+
+    public void runMacro() {
+        if (mRobot != null) {
+            spheroMacro.runMacro();
+        }
+    }
+
     public void setRobot(ConvenienceRobot r) {
         this.mRobot = r;
+        spheroMacro = new SpheroMacro(mRobot);
     }
 
     @Override

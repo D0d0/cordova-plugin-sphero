@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
   "description": "Cordova Sphero Plugin",
-  "author": "Jozef Dúc <jozef.d13@gmail.com>",
+  "author": "Jozef DÃºc <jozef.d13@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/D0d0/cordova-plugin-sphero"
