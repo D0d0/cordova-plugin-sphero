@@ -46,18 +46,17 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
 
                                 mRobot.setLed(0.0f, 0.0f, 1.0f);
                                 mRobot.drive(90.0f, 5.0f);
+
+                                if (DiscoveryAgentClassic.getInstance()
+                                        .isDiscovering()) {
+                                    DiscoveryAgentClassic.getInstance()
+                                            .stopDiscovery();
+                                }
                                 callbackContext.success();
                             case Disconnected:
                                 break;
                             default:
-                                callbackContext.error("Connection retries exceeded, connection failed");
                                 break;
-                        }
-
-                        if (DiscoveryAgentClassic.getInstance()
-                                .isDiscovering()) {
-                            DiscoveryAgentClassic.getInstance()
-                                    .stopDiscovery();
                         }
                     }
                 });

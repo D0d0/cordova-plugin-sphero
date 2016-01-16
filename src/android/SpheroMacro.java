@@ -16,7 +16,6 @@ public class SpheroMacro {
 
     public SpheroMacro(ConvenienceRobot mRobot) {
         this.mRobot = mRobot;
-
     }
 
     public void setRobotToDefaultState() {
