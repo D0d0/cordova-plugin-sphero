@@ -17,8 +17,8 @@ public class MacroBuilder {
     private static int orientation = 0;
 
     public static void buildMacro(MacroObject macro, JSONArray args) throws JSONException {
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject object = array.getJSONObject(i);
+        for (int i = 0; i < args.length(); i++) {
+            JSONObject object = args.getJSONObject(i);
             if ("forward".equals(object.getString("type").toLowerCase())) {
                 moveForward(macro);
                 stopMacro(macro);
