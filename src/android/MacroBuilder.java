@@ -49,7 +49,7 @@ public class MacroBuilder {
         macro.addCommand(new Roll(0.0f, orientation, 255));
     }
 
-    private static void setColor(MacroBuilder macro, int r, int g, int b) {
+    private static void setColor(MacroObject macro, int r, int g, int b) {
         macro.addCommand(new RGB(r, g, b, 255));
     }
 
