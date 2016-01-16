@@ -1,15 +1,13 @@
 package com.plugin.sphero;
 
-import com.orbotix.ConvenienceRobot;
-import com.orbotix.macro.AbortMacroCommand;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.orbotix.macro.MacroObject;
 import com.orbotix.macro.cmd.Delay;
-import com.orbotix.macro.cmd.LoopEnd;
-import com.orbotix.macro.cmd.LoopStart;
 import com.orbotix.macro.cmd.RGB;
-import com.orbotix.macro.cmd.RawMotor;
 import com.orbotix.macro.cmd.Roll;
-import com.orbotix.macro.cmd.Stabilization;
 
 public class MacroBuilder {
 
@@ -40,7 +38,7 @@ public class MacroBuilder {
                 continue;
             }
             if ("color".equals(object.getString("type").toLowerCase())) {
-                moveRight(macro, object.getInt("r"), object.getInt("g"), object.getInt("b"));
+                setColor(macro, object.getInt("r"), object.getInt("g"), object.getInt("b"));
             }
         }
     }

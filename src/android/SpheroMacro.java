@@ -1,15 +1,11 @@
 package com.plugin.sphero;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.macro.AbortMacroCommand;
 import com.orbotix.macro.MacroObject;
-import com.orbotix.macro.cmd.Delay;
-import com.orbotix.macro.cmd.LoopEnd;
-import com.orbotix.macro.cmd.LoopStart;
-import com.orbotix.macro.cmd.RGB;
-import com.orbotix.macro.cmd.RawMotor;
-import com.orbotix.macro.cmd.Roll;
-import com.orbotix.macro.cmd.Stabilization;
 
 public class SpheroMacro {
 
