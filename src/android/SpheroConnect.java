@@ -45,8 +45,9 @@ public class SpheroConnect extends AsyncTask<String, String, String> {
                                 spheroPlugin.setRobot(mRobot);
 
                                 mRobot.setLed(0.0f, 0.0f, 1.0f);
-                                mRobot.drive(90.0f, 5.0f);
-                                mRobot.setBackLedBrightness(1);
+                                mRobot.setLed(0.0f, 1.0f, 0.0f);
+                                mRobot.setLed(1.0f, 0.0f, 0.0f);
+                                mRobot.setLed(0.0f, 0.0f, 1.0f);
 
                                 if (DiscoveryAgentClassic.getInstance()
                                         .isDiscovering()) {

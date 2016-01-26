@@ -39,6 +39,7 @@ public class MacroBuilder {
             }
             if ("color".equals(object.getString("type").toLowerCase())) {
                 setColor(macro, object.getInt("r"), object.getInt("g"), object.getInt("b"));
+                macro.addCommand(new Delay(1500));
             }
         }
     }
@@ -51,27 +52,27 @@ public class MacroBuilder {
         macro.addCommand(new RGB(r, g, b, 255));
     }
 
-    private static void  moveForward(MacroObject macro) {
+    private static void moveForward(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 0, 0));
-        macro.addCommand(new Delay(1000));
+        macro.addCommand(new Delay(1500));
         orientation = 0;
     }
 
-    private static void  moveBackwards(MacroObject macro) {
+    private static void moveBackwards(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 180, 0));
-        macro.addCommand(new Delay(1000));
+        macro.addCommand(new Delay(1500));
         orientation = 180;
     }
 
-    private static void  moveLeft(MacroObject macro) {
+    private static void moveLeft(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 270, 0));
-        macro.addCommand(new Delay(1000));
+        macro.addCommand(new Delay(1500));
         orientation = 270;
     }
 
-    private static void  moveRight(MacroObject macro) {
+    private static void moveRight(MacroObject macro) {
         macro.addCommand(new Roll(SPEED, 90, 0));
-        macro.addCommand(new Delay(1000));
+        macro.addCommand(new Delay(1500));
         orientation = 90;
     }
 }
