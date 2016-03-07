@@ -39,7 +39,7 @@ public class MacroBuilder {
                 stopMacro(macro);
                 continue;
             }
-            if ("blink".equals(object.get("type").toLowerCase())) {
+            if ("blink".equals(object.getString("type").toLowerCase())) {
                 Random rand;
                 for (int i = 0; i < 15; i++) {
                     macro.addCommand(new RGB(rand.nextInt((255) + 1), rand.nextInt((255) + 1), rand.nextInt((255) + 1), 255));
