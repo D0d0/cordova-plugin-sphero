@@ -1,5 +1,7 @@
 package com.plugin.sphero;
 
+import java.util.Random;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,6 +38,13 @@ public class MacroBuilder {
                 moveRight(macro);
                 stopMacro(macro);
                 continue;
+            }
+            if ("blink".equals(object.get("type").toLowerCase())) {
+                Random rand;
+                for (int i = 0; i < 15; i++) {
+                    macro.addCommand(new RGB(rand.nextInt((255) + 1), rand.nextInt((255) + 1), rand.nextInt((255) + 1), 255));
+                    stopMacro(macro);
+                }
             }
             if ("color".equals(object.getString("type").toLowerCase())) {
                 setColor(macro, object.getInt("r"), object.getInt("g"), object.getInt("b"));
