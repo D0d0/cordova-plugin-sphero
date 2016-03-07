@@ -44,6 +44,7 @@ public class MacroBuilder {
                 for (int i = 0; i < 15; i++) {
                     macro.addCommand(new RGB(rand.nextInt((255) + 1), rand.nextInt((255) + 1), rand.nextInt((255) + 1), 255));
                     stopMacro(macro);
+                    macro.addCommand(new Delay(100));
                 }
             }
             if ("color".equals(object.getString("type").toLowerCase())) {
