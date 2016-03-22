@@ -41,10 +41,10 @@ public class MacroBuilder {
             }
             if ("blink".equals(object.getString("type").toLowerCase())) {
                 Random rand = new Random();
-                for (int j = 0; j < 15; j++) {
+                stopMacro(macro);
+                for (int j = 0; j < 5; j++) {
                     macro.addCommand(new RGB(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256), 255));
-                    stopMacro(macro);
-                    macro.addCommand(new Delay(100));
+                    macro.addCommand(new Delay(50));
                 }
             }
             if ("color".equals(object.getString("type").toLowerCase())) {
