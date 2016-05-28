@@ -7,7 +7,7 @@
     "url": "https://github.com/D0d0/cordova-plugin-sphero"
   },
   "keywords": [
-    "cordova",
+    "cordova-android",
     "sphero"
   ],
   "devDependencies": {
