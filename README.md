@@ -10,21 +10,21 @@ This plugin allows you to control your Sphero robot. It includes some basic comm
 
 # Documentation
 
-Sphero.connect(successCallback, errorCallback, args)
+##### Sphero.connect(successCallback, errorCallback, args)
 connects to your Sphero
 
-Sphero.disconnect(successCallback, errorCallback, args)
+##### Sphero.disconnect(successCallback, errorCallback, args)
 disconnects from your Sphero
 
-Sphero.changeColor(successCallback, errorCallback, args)
+##### Sphero.changeColor(successCallback, errorCallback, args)
 Change Sphero color
 
-Sphero.setRobotToDefaultState(successCallback, errorCallback, args)
+##### Sphero.setRobotToDefaultState(successCallback, errorCallback, args)
 Set Sphero to default state
 
-Sphero.runMacro(successCallback, errorCallback, args)
-Run macro. 
-Allowed commands
+##### Sphero.runMacro(successCallback, errorCallback, args)
+Run macro. Commands are sent in `args` as an `array`. Note: longer commands are ignored by Sphero.
+Allowed commands in `args`
 -  Change color to RBG. RGB values are [0-255] {type: "color", r: r, g: g, b: b}
 -  Rotate and move robot {type: "forward||backwards||left||right"}
 -  Blink with random colors {type: "blink"}
