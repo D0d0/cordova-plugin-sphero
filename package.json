@@ -1,4 +1,5 @@
 {
+  "name": "cordova-plugin-sphero",
   "version": "0.0.1",
   "description": "Cordova Sphero Plugin",
   "author": "Jozef Dúc <jozef.d13@gmail.com>",
